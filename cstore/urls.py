@@ -18,13 +18,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views, views
 
-from userextend.forms import AuthenticationNewForm
+from userextend.forms import AuthenticationNewForm, ChangePasswordForm
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path("login/", views.LoginView.as_view(form_class=AuthenticationNewForm), name="login"),
+    path('change-password/', views.PasswordChangeView.as_view(form_class=ChangePasswordForm), name='password-change'),
+    path('password-change/done/', views.PasswordChangeDoneView.as_view(), name='password-change-done'),
     path('', include('django.contrib.auth.urls')),
-    path('', include('userextend.urls'))
-    #path for changepassword?
+    path('', include('userextend.urls')),
+
 ]
