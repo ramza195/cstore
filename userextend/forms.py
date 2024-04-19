@@ -16,7 +16,7 @@ class UserForm(UserCreationForm):
         fields = [
             'first_name',
             'last_name',
-            'email'
+            'email',
         ]
 
     def __init__(self, *args, **kwargs):

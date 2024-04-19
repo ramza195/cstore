@@ -17,7 +17,8 @@ class UserCreateView(CreateView):
         new_user = form.save(commit=False)
         new_user.first_name = new_user.first_name.title()
         new_user.last_name = new_user.last_name.title()
-        new_user.username = new_user.email
+        # new_user.username = f'{new_user.email}'
         new_user.save()
+        return super().form_valid(form)
 
 

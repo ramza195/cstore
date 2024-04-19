@@ -26,4 +26,5 @@ urlpatterns = [
     path("login/", views.LoginView.as_view(form_class=AuthenticationNewForm), name="login"),
     path('', include('django.contrib.auth.urls')),
     path('', include('userextend.urls'))
+    #path for changepassword?
 ]
