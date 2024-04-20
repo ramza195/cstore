@@ -26,15 +26,16 @@ class UserCreateView(CreateView):
     success_url = reverse_lazy('login')
 
     def form_valid(self, form):
-        new_user = form.save(commit=False)
-        new_user.first_name = new_user.first_name.title()
-        new_user.last_name = new_user.last_name.title()
-        # new_user.username = f'{new_user.email}'
-        # new_user.save()
-        # return super().form_valid(form)
-        new_user.username = f'{new_user.first_name[0].lower()}{new_user.last_name.replace(' ', '').lower()}_{str(generate_six_token())}'
-        new_user.save()
-        return redirect('login')
+        if form.is_valid():
+            new_user = form.save(commit=False)
+            new_user.first_name = new_user.first_name.title()
+            new_user.last_name = new_user.last_name.title()
+            new_user.email = new_user.username
+            new_user.save()
+            # new_user.username = f'{new_user.first_name[0].lower()}{new_user.last_name.replace(' ', '').lower()}_{str(generate_six_token())}'
+            # new_user.save()
+            return redirect('login')
+        return super().form_valid(form)
 
 
 class ChangePasswordView(PasswordChangeView):
@@ -42,5 +43,3 @@ class ChangePasswordView(PasswordChangeView):
     model = User
     form_class = ChangePasswordForm
     success_url = reverse_lazy('home_page')
-
-

@@ -20,17 +20,17 @@
         </li>
       </ul>
         {% if user.is_authenticated %}
-            <li class="nav-item dropdown">
+            <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                    aria-expanded="false">Contul meu</a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{% url 'password-change' %}">Schimbare parola</a></li>
                     <form method="post" action="{% url 'logout' %}">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-light">Logout, {{ user.username }}</button>
+                        <button type="submit" class="btn btn-light text-nowrap">Logout, {{ user.username }}</button>
                     </form>
                 </ul>
-            </li>
+            </div>
             {% else %}
             <div>
                 <a href="{% url 'login' %}" class="btn btn-outline-success">Logare</a>
