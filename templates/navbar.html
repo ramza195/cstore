@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">C-Store</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="{% url 'home_page' %}">C-Store</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" 
+            aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -9,8 +10,13 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'home_page' %}">Acasa</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Categorii Produse</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorii Produse</a>
+            <ul class="dropdown-menu">
+                {% for category in categories %}
+                    <li><a class="dropdown-item" href="{% url 'get-products' category.id %}">{{ category.name }}</a></li>
+                {% endfor %}
+            </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Despre noi</a>
@@ -20,6 +26,7 @@
         </li>
       </ul>
         {% if user.is_authenticated %}
+            <div class="btn btn-success"
             <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                    aria-expanded="false">Contul meu</a>

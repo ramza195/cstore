@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Lista Produse {% endblock %}
+{% block content %} 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                {% if all_products %}
+                    <table class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Imagine</th>
+                        <th>Nume produs</th>
+                        <th>Descriere</th>
+                        <th>Categorie</th>
+                        <th>Pret</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for product in all_products %}
+                        <tr>
+                            <td>
+                                {% if product.image %}
+                                    <img src="{{ product.image.url }}" alt="imagine produs" width="60" height="60">
+                                {% else %}
+                                    <img src="{% static 'images/logo.jpeg' %}" alt="imagine profil" width="60" height="60">
+                                {% endif %}
+                            </td>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.color }}</td>
+                            <td>{{ product.description }}</td>
+                            <td>{{ product.category }}</td>
+                            <td>{{ product.price }}</td>
+                            <td>
+                                <a class="btn btn-outline-secondary" href="{% url 'details-product' product.id%}">Detalii produs</a>
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <form action="{% url 'add-to-cart' %}" method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                                        <input type="hidden" name="quantity" value="1">
+                                        <button type="submit" class="btn btn-sm btn-success"><i class="bi bi-cart-plus"></i> Adauga in cos</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    </table>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

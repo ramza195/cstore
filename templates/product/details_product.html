@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} {{ product.name }} {% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 offset-md-5 gy-5">
+                <div class="card">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="Imagine produs"
+                             class="card-img-top" height="250">
+                    {% else %}
+                        <img src="{% static 'images/logo.jpeg' %}" alt="Imagine default"
+                             class="card-img-top" height="150">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product }}</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Descriere produs: {{ product.description }}</p>
+                        <p class="card-text">Pret: {{ product.price }}</p>
+                    </div>
+                    <div class="btn-group">
+                        <form action="{% url 'add-to-cart' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="product_id" value="{{ product.id }}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-sm btn-success"><i class="bi bi-cart-plus"></i> Add to
+                                Cart
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %} Cos cumparaturi {% endblock %}
+
+{% block content %}
+    <div class="row mt-10">
+        {% if cart.cartitem_set.all %}
+            {% for cart_item in cart.cartitem_set.all %}
+                <div class="col-md-7">
+                    <div class="row mt-10">
+                        <div class="card border border-dark">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ cart_item.product.name }}</h5>
+                                <p class="card-text">Pret: {{ cart_item.product.price }}</p>
+                                <p class="card-text">Quantity: {{ cart_item.quantity }}</p>
+                                <form action="{% url 'add-to-cart' %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="product_id" value="{{ cart_item.product.id }}">
+                                    <input type="hidden" name="quantity" value="-1">
+                                    <button type="submit" class="btn btn=primary">Sterge produs</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h5>Nu ai adaugat nimic in cosul de cumparaturi!</h5>
+        {% endif %}
+    </div>
+
+{% endblock %}

@@ -10,13 +10,13 @@ from django.views.generic import CreateView
 from userextend.forms import UserForm, ChangePasswordForm
 
 
-def generate_six_token():
-    six_digit_code = randint(0, 999999)
-    formatted_code = f"{six_digit_code:06d}"
-    return formatted_code
-
-
-sixtoken = generate_six_token()
+# def generate_six_token():
+#     six_digit_code = randint(0, 999999)
+#     formatted_code = f"{six_digit_code:06d}"
+#     return formatted_code
+#
+#
+# sixtoken = generate_six_token()
 
 
 class UserCreateView(CreateView):
@@ -32,8 +32,6 @@ class UserCreateView(CreateView):
             new_user.last_name = new_user.last_name.title()
             new_user.email = new_user.username
             new_user.save()
-            # new_user.username = f'{new_user.first_name[0].lower()}{new_user.last_name.replace(' ', '').lower()}_{str(generate_six_token())}'
-            # new_user.save()
             return redirect('login')
         return super().form_valid(form)
 

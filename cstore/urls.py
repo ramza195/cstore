@@ -32,5 +32,8 @@ urlpatterns = [
     path("reset/done/", views.PasswordResetCompleteView.as_view(), name="password_reset_complete"),
     path('', include('django.contrib.auth.urls')),
     path('', include('userextend.urls')),
+    path('', include('category.urls')),
+    path('', include('product.urls')),
+    path('', include('cart.urls'))
 
 ]

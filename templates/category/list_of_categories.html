@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Categorii produse {% endblock %}
+{% block content %} 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                {% if all_categories %}
+                    <table class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nume</th>
+                    </tr>
+                    </thead>
+                    </table>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

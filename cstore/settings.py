@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'userextend',
+    'category',
+    'product',
+    'cart'
 ]
 
 MIDDLEWARE = [
@@ -65,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cstore.context_processors.get_all_categories',
             ],
         },
     },
@@ -131,8 +135,9 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'mail.aplicatiedjango.ro'
-EMAIL_HOST_USER = 'ro56@aplicatiedjango.ro'
-EMAIL_HOST_PASSWORD = 'Django1234'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'no.reply.c.store@gmail.com'
+EMAIL_HOST_PASSWORD = 'culu urut wyuh qyey'
 EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = 'ro56@aplicatiedjango.ro'
+DEFAULT_FROM_EMAIL = 'no.reply.c.store@gmail.com'
