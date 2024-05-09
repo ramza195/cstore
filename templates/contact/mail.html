@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Email</title>
+    <title>Email simplu</title>
 </head>
 <body style="font-family: Arial, sans-serif;">
 
     <div style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
-        <h2 style="color: #333;">Scentopia Contact Message</h2>
-        <p>Hello, <b>{{ new_contact.nickname }}</b></p>
-        <p>Your message has been received!</p>
-        <p>Please see below your request:</p>
-        <p><b>Subject:</b> {{ new_contact.subject }}</p>
-        <p><b>Message:</b> {{ new_contact.message }}</p>
-        <p><b>Your contact email:</b> {{ new_contact.email }}</p>
-        <p><b>Your contact phone number:</b> {{ new_contact.phone_number }}</p>
+        <h2 style="color: #333;">Formular contact C-Store</h2>
+        <p>Salutare, <b>{{ new_contact.nume }}</b></p>
+        <p>Am primit mesajul tau!</p>
+        <p>Poti revedea mesajul mai jos:</p>
+        <p><b>Subiect:</b> {{ new_contact.subiect }}</p>
+        <p><b>Mesaj:</b> {{ new_contact.mesaj }}</p>
+        <p><b>Adresa de email de contact:</b> {{ new_contact.email }}</p>
+        <p><b>Numar telefon de contact:</b> {{ new_contact.numar_telefon }}</p>
         <br><br>
-        <p>Thank you for contacting <b>Scentopia</b>! You will be receiving a reply as soon as possible.</p>
-        <a href="http://127.0.0.1:8000/">Visit us</a>
+        <p>Iti multumim ca ai contactat <b>C-Store</b>! Iti vom raspunde in cel mai scurt timp.</p>
+        <a href="http://localhost:8000/">Acceseaza site-ul</a>
         <br><br>
-        <p>Best regards,</p>
-        <p>Scentopia Perfumes</p>
+        <p>Toate cele bune,</p>
+        <p>C-Store</p>
     </div>
 
 </body>

@@ -1,6 +1,6 @@
 from django.db import models
 
-class Contact(models.Model):
+class Contacts(models.Model):
     nume = models.CharField(max_length=255)
     subiect = models.CharField(max_length=255)
     mesaj = models.TextField()

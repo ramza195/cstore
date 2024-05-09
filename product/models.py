@@ -10,7 +10,9 @@ class Product(models.Model):
         ('roz', 'Roz'),
         ('alb', 'Alb'),
         ('lila', 'Lila'),
-        ('verde', 'Verde')
+        ('verde', 'Verde'),
+        ('mov', 'Mov'),
+        ('galben', 'Galben')
     ]
     name = models.CharField(max_length=255)
     color = models.CharField(max_length=10, choices=COLOR)
