@@ -9,7 +9,7 @@ from product.models import Product
 @login_required
 def cart_view(request):
     cart = get_open_cart(request)
-    return render(request, 'cart.html', {'cart': cart})
+    return render(request, 'cart/cart.html', {'cart': cart})
 
 @login_required()
 def get_open_cart(request):

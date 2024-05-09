@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'userextend',
     'category',
     'product',
-    'cart'
+    'cart',
+    'contact'
 ]
 
 MIDDLEWARE = [
