@@ -10,8 +10,8 @@
                         <div class="card border border-dark">
                             <div class="card-body">
                                 <h5 class="card-title">{{ cart_item.product.name }}</h5>
-                                <p class="card-text">Pret: {{ cart_item.product.price }}</p>
-                                <p class="card-text">Quantity: {{ cart_item.quantity }}</p>
+                                <p class="card-text">Pret: {{ cart_item.product.price }} LEI</p>
+                                <p class="card-text">Cantitate: {{ cart_item.quantity }}</p>
                                 <form action="{% url 'add-to-cart' %}" method="post">
                                     {% csrf_token %}
                                     <input type="hidden" name="product_id" value="{{ cart_item.product.id }}">
