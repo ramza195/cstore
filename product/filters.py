@@ -19,15 +19,7 @@ class ProductFilter(django_filters.FilterSet):
                                                                             'placeholder': 'Introduceti pretul maxim al produselor afisate'}))
 
 
-
     class Meta:
         model = Product
         fields = ['name', 'color', 'price_min', 'price_max']
 
-
-class SearchFilter(django_filters.FilterSet):
-    name = django_filters.CharFilter(lookup_expr='icontains')
-
-    class Meta:
-        model = Product
-        fields = ['name']

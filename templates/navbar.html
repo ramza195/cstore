@@ -1,50 +1,57 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'home_page' %}">C-Store</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" 
-            aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'home_page' %}">Acasa</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorii Produse</a>
-            <ul class="dropdown-menu">
-                {% for category in categories %}
-                    <li><a class="dropdown-item" href="{% url 'get-products' category.id %}">{{ category.name }}</a></li>
-                {% endfor %}
-                <li><a class="dropdown-item" href="{% url 'list-products' %}">Toate produsele</a></li>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home_page' %}">C-Store</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home_page' %}">Acasa</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">Categorii Produse</a>
+                    <ul class="dropdown-menu">
+                        {% for category in categories %}
+                            <li><a class="dropdown-item"
+                                   href="{% url 'get-products' category.id %}">{{ category.name }}</a></li>
+                        {% endfor %}
+                        <li><a class="dropdown-item" href="{% url 'list-products' %}">Toate produsele</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact-page' %}">Contact</a>
+                </li>
             </ul>
-        </li>
-          <li class="nav-item">
-          <a class="nav-link" href="{% url 'contact-page' %}">Contact</a>
-        </li>
-      </ul>
-        {% if user.is_authenticated %}
-            <div>
-            <a class="btn btn-primary" href="{% url 'cart' %}">Cos cumparaturi</a>
-            </div>
-            <br><br>
-            <div class="dropdown">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
-                   aria-expanded="false">Contul meu</a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item" href="{% url 'password-change' %}">Schimbare parola</a></li>
-                    <form method="post" action="{% url 'logout' %}">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-light text-nowrap">Logout, {{ user.username }}</button>
-                    </form>
-                </ul>
-            </div>
+            {% if user.is_authenticated %}
+                <div>
+                    <a class="btn btn-primary" href="{% url 'cart' %}">Cos cumparaturi</a>
+                </div>
+                <br><br>
+                <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">Contul meu</a>
+                    <div class="align-right">
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="{% url 'password-change' %}">Schimbare parola</a></li>
+                            <form method="post" action="{% url 'logout' %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-light text-nowrap">
+                                    Logout, {{ user.username }}</button>
+                            </form>
+                        </ul>
+                    </div>
+                </div>
             {% else %}
-            <div>
-                <a href="{% url 'login' %}" class="btn btn-outline-success">Logare</a>
-                <a href="{% url 'create-user' %}" class="btn btn-outline-danger">Inregistrare</a>
-            </div>
-        {% endif %}
+                <div>
+                    <a href="{% url 'login' %}" class="btn btn-outline-success">Logare</a>
+                    <a href="{% url 'create-user' %}" class="btn btn-outline-danger">Inregistrare</a>
+                </div>
+            {% endif %}
+        </div>
     </div>
-  </div>
 </nav>

@@ -26,10 +26,10 @@ class ProductListView(ListView):
         return data
 
 
-
 def get_all_products_per_category(request, pk):
     products_per_category = Product.objects.filter(category_id=pk)
-    return render(request, 'product/list_of_products.html', {'all_products': products_per_category})
+    return render(request, 'product/list_of_products.html',
+                  {'all_products': products_per_category})
 
 
 class ProductDetailView(DetailView):

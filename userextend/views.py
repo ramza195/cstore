@@ -10,15 +10,6 @@ from django.views.generic import CreateView
 from userextend.forms import UserForm, ChangePasswordForm
 
 
-# def generate_six_token():
-#     six_digit_code = randint(0, 999999)
-#     formatted_code = f"{six_digit_code:06d}"
-#     return formatted_code
-#
-#
-# sixtoken = generate_six_token()
-
-
 class UserCreateView(CreateView):
     template_name = 'userextend/create_user.html'
     model = User
