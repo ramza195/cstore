@@ -18,6 +18,7 @@
                     </div>
                     <div class="card-body">
                         <p class="card-text">Descriere produs: {{ product.description }}</p>
+                        <p class="card-text">Culoare: {{ product.color|capfirst }}</p>
                         <p class="card-text">Pret: {{ product.price }} LEI</p>
                     </div>
                     <div class="btn-group">
@@ -25,8 +26,7 @@
                             {% csrf_token %}
                             <input type="hidden" name="product_id" value="{{ product.id }}">
                             <input type="hidden" name="quantity" value="1">
-                            <button type="submit" class="btn btn-sm btn-success"><i class="bi bi-cart-plus"></i> Add to
-                                Cart
+                            <button type="submit" class="btn btn-sm btn-success"><i class="bi bi-cart-plus"></i> Adauga in cos
                             </button>
                         </form>
                     </div>
